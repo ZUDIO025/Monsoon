@@ -6,10 +6,8 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #e0f7fa, #fff3e0);
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -18,97 +16,113 @@
       overflow: hidden;
     }
 
-    .container {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      padding: 40px 30px;
-      max-width: 400px;
-      animation: slideDown 1s ease-out;
-    }
-
-    @keyframes slideDown {
-      from {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
     h1 {
-      color: #00796b;
+      color: #e91e63;
+      font-size: 28px;
+      text-align: center;
       margin-bottom: 0;
-      font-size: 24px;
+      animation: pop-in 1s ease-out forwards;
     }
 
     h2 {
-      color: #00796b;
-      margin-top: 10px;
+      color: #555;
       font-size: 18px;
-      font-weight: 400;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
     }
 
     button {
-      margin-top: 30px;
-      padding: 14px 28px;
-      font-size: 16px;
-      font-weight: bold;
+      padding: 12px 25px;
+      font-size: 18px;
+      background-color: #ff4081;
       color: white;
-      background: #ff6f00;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease-in-out;
     }
 
     button:hover {
-      background: #ff8f00;
+      transform: scale(1.1);
     }
 
-    .coupon {
-      margin-top: 25px;
-      font-size: 28px;
+    #coupon {
+      margin-top: 20px;
+      font-size: 24px;
+      color: #4CAF50;
       font-weight: bold;
-      color: #d32f2f;
-      background: #fff8e1;
-      border: 2px dashed #d32f2f;
-      padding: 16px;
-      border-radius: 10px;
+      animation: bounceIn 1s forwards;
       display: none;
-      animation: popIn 0.5s ease forwards;
     }
 
-    @keyframes popIn {
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes bounceIn {
       0% {
-        transform: scale(0.6);
+        transform: scale(0.3);
         opacity: 0;
       }
+      50% {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+      70% {
+        transform: scale(0.9);
+      }
       100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pop-in {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
         transform: scale(1);
         opacity: 1;
       }
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>You are selected for the Monsoon Offer,</h1>
-    <h2>By Zudio</h2>
 
-    <button onclick="showCoupon()">🎁 Generate Coupon Code</button>
+  <h1>You are selected for the Monsoon Offer</h1>
+  <h2>By ZUDIO</h2>
+  
+  <img src="WhatsApp Image 2025-06-24 at 2.35.43 PM.jpeg" alt="Promo Image">
 
-    <div class="coupon" id="couponCode">KAZHAPPU025</div>
-  </div>
+  <button onclick="generateCoupon()">🎁 Generate Coupon</button>
+
+  <div id="coupon">🎉 Your Code: <span style="color:#000">KAZHAPPU025</span></div>
 
   <script>
-    function showCoupon() {
-      const coupon = document.getElementById("couponCode");
-      coupon.style.display = "block";
-      coupon.style.animation = "popIn 0.5s ease";
+    function generateCoupon() {
+      const coupon = document.getElementById('coupon');
+      coupon.style.display = 'block';
+      coupon.style.animation = 'bounceIn 1s';
     }
   </script>
+
 </body>
 </html>
